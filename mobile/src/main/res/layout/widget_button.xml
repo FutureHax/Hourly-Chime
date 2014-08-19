@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Button xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:textColor="@color/white"
+    android:background="@android:color/holo_blue_light"
+    android:layout_height="32dp"
+
+    style="@android:style/TextAppearance.Holo.Small"
+    android:textStyle="bold"
+    android:padding="6dp"
+    android:onClick="onButtonClick"
+    android:textSize="12sp"
+    android:textAllCaps="true"
+    android:text="Test Pattern"
+    android:id="@+id/button" />

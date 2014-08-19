@@ -1,0 +1,34 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="Enable Hourly Chime" />
+    <SwitchPreference
+        android:key="enable_wear"
+        android:title="On Wear"
+        android:defaultValue="true" />
+
+    <SwitchPreference
+        android:key="enable_mobile"
+        android:title="On Device"
+        android:defaultValue="true" />
+
+    <PreferenceCategory android:title="Hourly Chime Pattern"/>
+
+    <com.t3hh4xx0r.hourlychime.ButtonPreference
+        android:key="pattern"
+        android:title="Set Vibration Pattern"/>
+
+    <Preference
+        android:key="simple_pattern"
+        android:title="Set Simple Vibration Pattern"/>
+
+    <PreferenceCategory android:title="Quiet Hours" />
+
+    <Preference
+        android:key="quiet_hours"
+        android:title="Manage Quiet Hours"/>
+
+    <!--<Preference-->
+        <!--android:key="debug"-->
+        <!--android:title="Debug Menu"/>-->
+
+</PreferenceScreen>

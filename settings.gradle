@@ -1,0 +1,2 @@
+include ':mobile', ':wear', ':datetimepicker-library'
+project(':datetimepicker-library').projectDir = new File('Resources/datetimepicker/datetimepicker-library')

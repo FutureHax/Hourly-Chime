@@ -1,0 +1,29 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 20
+    buildToolsVersion '20.0.0'
+
+    defaultConfig {
+        applicationId "com.t3hh4xx0r.hourlychime"
+        minSdkVersion 14
+        targetSdkVersion 20
+        versionCode 7
+        versionName "1.2.6"
+    }
+    buildTypes {
+        release {
+            runProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    wearApp project(':wear')
+    compile project(':datetimepicker-library')
+    compile 'com.google.android.gms:play-services-wearable:+'
+    compile 'com.android.support:support-v4:20+'
+    compile 'joda-time:joda-time:2.3'
+}

@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/phone"
+        android:orderInCategory="100"
+        android:showAsAction="always|withText"
+        android:title="Open on phone" />
+
+</menu>
