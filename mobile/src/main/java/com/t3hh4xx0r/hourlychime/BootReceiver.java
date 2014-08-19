@@ -11,6 +11,12 @@ import java.util.Calendar;
 
 public class BootReceiver extends BroadcastReceiver {
 
+    /**
+     * Ensure we start the service again on boot.
+     *
+     * @param context
+     * @param intent
+     */
     @Override
     public void onReceive(Context context, Intent intent) {
         context.startService(new Intent(context, HourlyChimeService.class));

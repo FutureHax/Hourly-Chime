@@ -10,8 +10,6 @@ import com.google.android.gms.wearable.Wearable;
 
 public class MainActivity extends FragmentActivity {
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,12 +19,6 @@ public class MainActivity extends FragmentActivity {
         ViewPager pager = (ViewPager) findViewById(R.id.pager);
         pager.setAdapter(adapter);
 
-
     }
-
-
-
-
-
 
 }

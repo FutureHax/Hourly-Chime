@@ -29,7 +29,6 @@ public class SendMessageTask extends AsyncTask<Void, Void, Void> {
                 Wearable.NodeApi.getConnectedNodes(mGoogleApiClient).await();
 
         for (Node node : nodes.getNodes()) {
-            Log.d("THE CONNECTED NODE", node.getId());
                 Wearable.MessageApi.sendMessage(mGoogleApiClient, node.getId(),
                         "open", null);
         }

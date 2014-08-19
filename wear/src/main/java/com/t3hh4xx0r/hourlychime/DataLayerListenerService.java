@@ -17,11 +17,6 @@ public class DataLayerListenerService extends WearableListenerService {
     public void onMessageReceived(MessageEvent messageEvent) {
         super.onMessageReceived(messageEvent);
         Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        AudioManager audioManager = (AudioManager) getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
-
-        Log.d("VOLUME - STREAM_SYSTEM", Integer.toString(audioManager.getStreamVolume(AudioManager.STREAM_SYSTEM)));
-        Log.d("VOLUME - STREAM_NOTIFICATION", Integer.toString(audioManager.getStreamVolume(AudioManager.STREAM_NOTIFICATION)));
-        Log.d("VOLUME - STREAM_RING", Integer.toString(audioManager.getStreamVolume(AudioManager.STREAM_RING)));
 
         String patternString = messageEvent.getPath();
         if (patternString.contains("[")) {

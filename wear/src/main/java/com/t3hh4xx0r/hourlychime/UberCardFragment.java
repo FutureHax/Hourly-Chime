@@ -17,5 +17,4 @@ public class UberCardFragment extends CardFragment {
         return inflater.inflate(R.layout.fragment_open_prompt, container, false);
     }
 
-
 }

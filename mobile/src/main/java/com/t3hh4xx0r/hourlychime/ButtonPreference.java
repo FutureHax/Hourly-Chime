@@ -10,6 +10,9 @@ import android.view.View;
 
 /**
  * Created by r2doesinc on 7/22/14.
+ *
+ * Custom {@link android.preference.Preference} including a clickable {@link android.widget.Button}
+ *
  */
 public class ButtonPreference extends Preference {
 
@@ -35,6 +38,11 @@ public class ButtonPreference extends Preference {
         });
     }
 
+    /**
+     * Occurs when inner button was clicked.
+     *
+     * @param v
+     */
     public void onButtonClick(View v) {
         Vibrator vibe = (Vibrator) v.getContext().getSystemService(Context.VIBRATOR_SERVICE);
 
@@ -46,6 +54,11 @@ public class ButtonPreference extends Preference {
         }
     }
 
+    /**
+     * Occurs when the root preference was clicked
+     *
+     * @param v
+     */
     private void onNonButtonClick(View v) {
         v.getContext().startActivity(new Intent(v.getContext(), SetPatternActivity.class));
     }

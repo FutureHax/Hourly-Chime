@@ -17,7 +17,6 @@ public Activity act;
     }
 
 
-
     @Override
     public int getCount() {
         return 2;

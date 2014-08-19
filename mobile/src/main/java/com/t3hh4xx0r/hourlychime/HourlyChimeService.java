@@ -24,16 +24,27 @@ public class HourlyChimeService extends Service implements
         GoogleApiClient.ConnectionCallbacks {
 
     GoogleApiClient mGoogleApiClient;
-    DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
 
     BroadcastReceiver tickWatcher = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             DateTime now = new DateTime(Calendar.getInstance());
 
+            /**
+             * Ensure the minute is 0, meaning the top of the hour has just been struck.
+             */
             if (now.getMinuteOfHour() == 0) {
                 int[] quietHours = new SettingsProvider(context).getQuietHours();
+                /**
+                 * Ensure valid qiet hours are set.
+                 */
                 if (quietHours.length == 4) {
+                    /**
+                     *
+                     * If quiet hours end is before start, the the end is actually the "tomorrow" of
+                     * the start time, so add a day
+                     *
+                     */
                     DateTime start = new DateTime().withHourOfDay(quietHours[0]).withMinuteOfHour(quietHours[1]);
                     DateTime end = new DateTime().withHourOfDay(quietHours[2]).withMinuteOfHour(quietHours[3]);
                     if (end.isBefore(start)) {
@@ -43,12 +54,7 @@ public class HourlyChimeService extends Service implements
                         now = now.withFieldAdded(DurationFieldType.days(), 1);
                     }
                     boolean isInQuietHours = new Interval(start, end).contains(now);
-                    Log.d("NOW###############################3", "" + fmt.print(now));
-                    Log.d("START###############################3", "" + fmt.print(start));
-                    Log.d("END###############################3", "" + fmt.print(end));
-
                     if (!isInQuietHours) {
-                        Log.d("SENDING###############################3", "" + fmt.print(now));
                         mGoogleApiClient.connect();
                     }
                 } else {
@@ -75,12 +81,12 @@ public class HourlyChimeService extends Service implements
                 .addConnectionCallbacks(this)
                 .build();
 
+        /**
+         * Prepare our listener for the {@link Intent.ACTION_TIME_TICK) event. This will trigger
+         * the app at the change of every minute.
+         */
         registerReceiver(tickWatcher, new IntentFilter(Intent.ACTION_TIME_TICK));
 
-    }
-
-    public void chime() {
-        new SendMessageTask(mGoogleApiClient, this).execute();
     }
 
     @Override
@@ -96,9 +102,14 @@ public class HourlyChimeService extends Service implements
         mGoogleApiClient.disconnect();
     }
 
+    /**
+     * Once the connection has been established, start the chime event.
+     *
+     * @param bundle
+     */
     @Override
     public void onConnected(Bundle bundle) {
-        chime();
+        new ChimeTask(mGoogleApiClient, this).execute();
     }
 
     @Override

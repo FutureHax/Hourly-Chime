@@ -13,6 +13,11 @@ import java.util.Arrays;
 
 /**
  * Created by r2doesinc on 6/30/14.
+ *
+ * An {@link android.os.AsyncTask} used to start the vibration pattern on the phone - if enabled -
+ * and to kick off the {@link com.google.android.gms.wearable.MessageApi.SendMessageResult}
+ * triggering the alert on the connected wear device(s).
+ *
  */
 public class ChimeTask extends AsyncTask<Void, Void, Void> {
     GoogleApiClient mGoogleApiClient;

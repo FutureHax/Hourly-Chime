@@ -16,7 +16,6 @@ public class DataLayerListenerService extends WearableListenerService {
     @Override
     public void onMessageReceived(MessageEvent messageEvent) {
         super.onMessageReceived(messageEvent);
-        Log.d("OPEN MESSAGE RECEIVED", messageEvent.getPath());
         if (messageEvent.getPath().equals("open")) {
             Intent i = new Intent(this, SettingsActivity.class);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

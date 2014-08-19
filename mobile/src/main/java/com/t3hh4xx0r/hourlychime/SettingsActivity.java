@@ -66,14 +66,6 @@ public class SettingsActivity extends PreferenceActivity {
                 boolean booleanValue = Boolean.parseBoolean(value.toString());
                 preference.setSummary(booleanValue ? "Enabled on wear" : "Disabled on wear");
             }
-
-//            else if (preference.getKey().equals("pattern")) {
-//                Log.d("THE PATTERN VALUE", value.toString());
-//                preference.setSummary("");
-//            } else if (preference.getKey().equals("simple_pattern")) {
-//                Log.d("THE SIMPLE PATTERN VALUE", value.toString());
-//                preference.setSummary("");
-//            }
             return true;
         }
     };
@@ -133,26 +125,10 @@ public class SettingsActivity extends PreferenceActivity {
             );
         }
 
-//        else if (preference.getKey().equals("simple_pattern")) {
-//            sBindPreferenceSummaryToValueListener.onPreferenceChange(preference,
-//                    PreferenceManager
-//                            .getDefaultSharedPreferences(preference.getContext())
-//                            .getInt(preference.getKey(), -1)
-//            );
-//        } else if (preference.getKey().equals("pattern")) {
-//            sBindPreferenceSummaryToValueListener.onPreferenceChange(preference,
-//                    PreferenceManager
-//                            .getDefaultSharedPreferences(preference.getContext())
-//                            .getString(preference.getKey(), "[]")
-//            );
-//        }
-
-
     }
 
     public void setQuietHoursSummary() {
         int[] quietHours = new SettingsProvider(this).getQuietHours();
-        Log.d("THE LENGTH", quietHours.length + ":");
         if (quietHours.length == 4) {
             StringBuilder sb = new StringBuilder();
             int hourStart = quietHours[0];
@@ -251,17 +227,6 @@ public class SettingsActivity extends PreferenceActivity {
         vibe = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 
         setupSimplePreferencesScreen();
-//        runTimeTests();
-
-//        Preference debug = findPreference("debug");
-//        debug.setWidgetLayoutResource(R.layout.widget_button);
-//        debug.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-//            @Override
-//            public boolean onPreferenceClick(Preference preference) {
-//                startActivity(new Intent(SettingsActivity.this, MainActivity.class));
-//                return false;
-//            }
-//        });
 
         findPreference("quiet_hours").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
@@ -412,9 +377,6 @@ public class SettingsActivity extends PreferenceActivity {
         // to reflect the new value, per the Android Design guidelines.
         bindPreferenceSummaryToValue(findPreference("enable_wear"));
         bindPreferenceSummaryToValue(findPreference("enable_mobile"));
-
-//        bindPreferenceSummaryToValue(findPreference("pattern"));
-//        bindPreferenceSummaryToValue(findPreference("simple_pattern"));
 
     }
 
