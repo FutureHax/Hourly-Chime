@@ -116,4 +116,19 @@ public class HourlyChimeService extends Service implements
     public void onConnectionSuspended(int i) {
 
     }
+
+    public static long[] generateGrandfatherPattern() {
+        int hour = Calendar.getInstance().get(Calendar.HOUR);
+        long[] pattern = new long[1 + (hour * 2)];
+        pattern[0] = 0;
+        int pos = 1;
+        while (pos < pattern.length) {
+            pattern[pos] = 100;
+            pos = pos + 1;
+            pattern[pos] = 200;
+            pos = pos + 1;
+        }
+
+        return pattern;
+    }
 }

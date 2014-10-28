@@ -27,6 +27,11 @@ public class SettingsProvider {
         return p.getBoolean("enable_mobile", true);
     }
 
+    public boolean getIsInGrandfatherMode() {
+        return p.getBoolean("grandfather_style", false);
+    }
+
+
     public long getSimpleVibrationPattern() {
         return p.getInt("simple_pattern", 250);
     }

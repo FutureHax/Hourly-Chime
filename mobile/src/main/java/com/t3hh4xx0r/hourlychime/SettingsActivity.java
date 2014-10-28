@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
@@ -69,6 +70,7 @@ public class SettingsActivity extends PreferenceActivity {
             return true;
         }
     };
+
     DateTimeFormatter fmt = DateTimeFormat.forPattern("dd HH:mm");
     String PLAY_LINK = "https://play.google.com/store/apps/details?id=com.t3hh4xx0r.hourlychime";
     Vibrator vibe;
@@ -250,6 +252,17 @@ public class SettingsActivity extends PreferenceActivity {
             }
         });
 
+        final CheckBoxPreference cbp = (CheckBoxPreference) findPreference("grandfather_style");
+        cbp.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                findPreference("pattern").setEnabled(cbp.isChecked());
+                findPreference("simple_pattern").setEnabled(cbp.isChecked());
+                return true;
+            }
+        });
+        findPreference("pattern").setEnabled(!cbp.isChecked());
+        findPreference("simple_pattern").setEnabled(!cbp.isChecked());
         findPreference("simple_pattern").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(final Preference preference) {
@@ -320,9 +333,9 @@ public class SettingsActivity extends PreferenceActivity {
     }
 
     private void runTimeTests() {
-       for (int i=0;i<23;i++) {
-           testTime(i);
-       }
+        for (int i = 0; i < 23; i++) {
+            testTime(i);
+        }
     }
 
     @Override

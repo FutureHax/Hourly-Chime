@@ -13,6 +13,13 @@
 
     <PreferenceCategory android:title="Hourly Chime Pattern"/>
 
+    <CheckBoxPreference
+        android:key="grandfather_style"
+        android:title="Grandfather Clock Style"
+        android:defaultValue="false"
+        android:persistent="true"
+        android:summary="Chime the hour."/>
+
     <com.t3hh4xx0r.hourlychime.ButtonPreference
         android:key="pattern"
         android:title="Set Vibration Pattern"/>
